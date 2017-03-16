@@ -61,32 +61,19 @@ export class D3MapComponent implements OnInit {
       .attr('width', width)
       .attr('height', height);
 
-    // svg.append("path")
-    //     .datum(topojson.feature(uk, uk.objects.subunits))
-    //     .attr("d", d3.geoPath().projection(d3.geoMercator()));
-    // var subunits = topojson.feature(uk, uk.objects.subunits);
 
     svg.append("path")
         .datum(topojson.feature(this.data, this.data.objects.collection))
         .attr("d", d3.geoPath().projection(d3.geoMercator()));
     var subunits = topojson.feature(this.data, this.data.objects.collection);
 
-    // var projection = d3.geoAlbers()
-    //     .center([0, 55.4])
-    //     .rotate([4.4, 0])
-    //     .parallels([50, 60])
-    //     .scale(1200 * 5)
-    //     .translate([width / 2, height / 2]);
+
       var projection = d3.geoAlbers()
           .scale(1)
           .translate([0,0]);
 
     var path = d3.geoPath()
         .projection(projection);
-
-    // svg.append("path")
-    //     .datum(topojson.feature(uk, uk.objects.subunits))
-    //     .attr("d", path);
 
     svg.append("path")
         .datum(topojson.feature(this.data, this.data.objects.collection))

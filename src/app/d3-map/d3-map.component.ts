@@ -27,7 +27,7 @@ const REGIONS = {
 })
 export class D3MapComponent implements OnInit {
 
-  @ViewChild('wanderwellmap') private wgMapContainer: ElementRef;
+  @ViewChild('wanderwellmap') private mapContainer: ElementRef;
   private parentRegion: number;
   private margin: any = { top: 20, bottom: 20, left: 20, right: 20 };
   private mapGroup: any;
@@ -45,18 +45,18 @@ export class D3MapComponent implements OnInit {
     this.wanderwellMapService.getTopoJson()
       .subscribe(data => {
         this.data = data;
-        this.createWgMap();
+        this.createMap();
         if (this.data) {
           this.updateMap();
         }
       });
   }
 
-  createWgMap() {
+  createMap() {
     var width = 500,
     height = 500;
 
-    let element = this.wgMapContainer.nativeElement;
+    let element = this.mapContainer.nativeElement;
     let svg = d3.select(element).append('svg')
       .attr('width', width)
       .attr('height', height);

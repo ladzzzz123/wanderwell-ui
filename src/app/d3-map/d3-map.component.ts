@@ -61,16 +61,15 @@ export class D3MapComponent implements OnInit {
       .attr('width', width)
       .attr('height', height);
 
-    var uk = this.data;
     // svg.append("path")
     //     .datum(topojson.feature(uk, uk.objects.subunits))
     //     .attr("d", d3.geoPath().projection(d3.geoMercator()));
     // var subunits = topojson.feature(uk, uk.objects.subunits);
 
     svg.append("path")
-        .datum(topojson.feature(uk, uk.objects.collection))
+        .datum(topojson.feature(this.data, this.data.objects.collection))
         .attr("d", d3.geoPath().projection(d3.geoMercator()));
-    var subunits = topojson.feature(uk, uk.objects.collection);
+    var subunits = topojson.feature(this.data, this.data.objects.collection);
 
     // var projection = d3.geoAlbers()
     //     .center([0, 55.4])
@@ -90,7 +89,7 @@ export class D3MapComponent implements OnInit {
     //     .attr("d", path);
 
     svg.append("path")
-        .datum(topojson.feature(uk, uk.objects.collection))
+        .datum(topojson.feature(this.data, this.data.objects.collection))
         .attr("d", path);
 
 
